@@ -108,3 +108,42 @@ class AffectImage(ui.ExpandedImageBox):
 
 	def OnMouseOverOut(self):
 		self.toolTip.HideToolTip()
+
+## find:
+	def __ArrangeImageList(self):
+		[...]
+
+## replace with:
+	def __ArrangeImageList(self):
+		xPos = 0
+		yPos = 0
+
+		xMax = 0
+
+		countRow = 0
+
+		if self.lovePointImage:
+			if self.lovePointImage.IsShow():
+				self.lovePointImage.SetPosition(xPos, yPos)
+				xPos += self.IMAGE_STEP
+				countRow += 1
+
+		if self.horseImage:
+			self.horseImage.SetPosition(xPos, yPos)
+			xPos += self.IMAGE_STEP
+			countRow += 1
+
+		for image in self.affectImageDict.values():
+			image.SetPosition(xPos, yPos)
+			xPos += self.IMAGE_STEP
+			countRow += 1
+
+			if xMax < xPos:
+				xMax = xPos
+
+			if countRow == 10:
+				xPos = 0
+				yPos += self.IMAGE_STEP
+				countRow = 0
+
+		self.SetSize(xMax, yPos + 26)
