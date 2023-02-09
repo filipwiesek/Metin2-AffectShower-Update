@@ -1,4 +1,31 @@
 ## find:
+	def BINARY_NEW_AddAffect(self, type, pointIdx, value, duration):
+		[...]
+			self.__ArrangeImageList()
+
+## replace with:
+	def BINARY_NEW_AddAffect(self, type, pointIdx, value, duration):
+		[...]
+			if not app.ENABLE_AFFECT_FIX:
+				self.__ArrangeImageList()
+
+## find:
+	def BINARY_NEW_RemoveAffect(self, type, pointIdx):
+		[...]
+		self.__ArrangeImageList()
+
+## replace with:
+	def BINARY_NEW_RemoveAffect(self, type, pointIdx):
+		[...]
+		if not app.ENABLE_AFFECT_FIX:
+			self.__ArrangeImageList()
+
+## paste below:
+	if app.ENABLE_AFFECT_FIX2:
+		def BINARY_NEW_RefreshAffect(self):
+			self.__ArrangeImageList()
+
+## find:
 class AffectImage(ui.ExpandedImageBox):
 	[...]
 
