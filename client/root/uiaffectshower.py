@@ -21,7 +21,7 @@
 			self.__ArrangeImageList()
 
 ## paste below:
-	if app.ENABLE_AFFECT_FIX2:
+	if app.ENABLE_AFFECT_FIX:
 		def BINARY_NEW_RefreshAffect(self):
 			self.__ArrangeImageList()
 
